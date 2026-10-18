@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: hyp-tip-donate
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: SITE_NAME
+        value: HYP TIP
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
